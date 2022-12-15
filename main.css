@@ -1,0 +1,327 @@
+:root{
+    --text-color-dark: hsl(0 0% 10%);
+    --text-color-light: hsl(0 0% 90%);
+
+    --bg-color-dark: hsl(0 0% 10%);
+    --bg-color-light: hsl(0 0% 90%);
+
+    --bg-element-color-dark: hsl(0 0% 20%);
+    --bg-element-color-light: hsl(0 0% 90%);
+
+    --bg-element-accent-color-dark: hsl(0 0% 15%);
+    --bg-element-accent-color-light: hsl(0 0% 95%);
+
+    --border-color1-dark: hsl(0 0% 50%);
+    --border-color1-light: hsl(0 0% 50%);
+}
+
+/*
+* SITEWIDE RESETS
+*/
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+html{
+    /* color-scheme: dark light; */
+    font-family: Helvetica, sans-serif;
+    color: var(--text-color);
+}
+body{
+    position: relative;
+    text-align: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+input, textarea, button, select {
+    font: inherit;
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: 600;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+p{
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+}
+/*
+* Utility Classes
+*/
+.hidden{
+    display: none;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.flex-centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button{
+    background-color: transparent;
+    border: none;
+}
+.text-select{
+    -webkit-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
+/*
+* SITEWIDE STYLES
+*/
+.header-primary{
+    padding: 1rem;
+    justify-content: space-around;
+}
+.back_button{
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--text-color-dark);
+}
+.source_link{
+    text-decoration: none;
+    color: var(--text-color-dark);
+    font-weight: 700;
+}
+.content-description{
+    padding: 1rem;
+}
+.content-description > p:nth-child(1){
+    font-size: .8rem;
+}
+.content-description > p:nth-child(2){
+    font-size: 1.2rem;
+}
+
+.step{
+    padding: 1rem;
+    margin-bottom: 2rem;
+    /* border: 1px solid black; */
+}
+.step-title{
+    text-align: left;
+    margin-left: 25vw;
+}
+.step-content{
+    font-weight: 600;
+}
+.step-content > p{
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+.step3 > .step-content{
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.step5 > .step-content{
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.step6 > .step-content{
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.step6 > p:nth-child(3){
+    margin-bottom: 1.5rem;
+}
+.step-content > .pattern-extra{
+    border: 1px solid var(--border-color1);
+    border-radius: 10px;
+    padding: .5rem;
+    background-color: var(--bg-element-color-light);
+}
+
+.step-content > .pattern-extra > p:last-child{
+    border: 1px solid var(--border-color1);
+    border-radius: 10px;
+    padding: 0 .5rem;
+    background-color: var(--bg-element-accent-color-light);
+}
+
+/*
+*   Notes
+*/
+.square-sum-solution_notes{
+    padding: 1rem;
+}
+.square-sum-solution_notes > ul{
+    /* list-style-type: '* '; */
+    list-style: none;
+}
+/* .square-sum-solution_notes > ul > li{
+    position: relative;
+} */
+.square-sum-solution_notes > ul > li::marker{
+    content: "*";
+    color: var(--text-color-dark);
+    font-size: 1.5rem;
+}
+.note{
+    margin-bottom: 1rem;
+}
+.note > a{
+    color: var(--text-color-dark);
+}
+
+/*
+*   Viewer for Images Window Thingy
+*/
+.viewer{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    display: none;
+}
+.viewer .overlay{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(0 0% 0% / 0.9);
+    z-index: -1;
+    animation: ViewerOverlayFadeIn 250ms linear forwards;
+}
+.viewer .content{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+.viewer-close_button{
+    position: absolute;
+    top: 10vh; right: 10vw;
+    color: var(--text-color-dark);
+}
+.viewer > .content > img{
+    background-color: white;
+}
+.viewer.open{
+    display: block;
+}
+/*
+*   Color Schemes
+*/
+@media (prefers-color-scheme: dark){
+    html{
+        color: var(--text-color-light);
+    }
+    body{
+        background-color: var(--bg-color-dark);
+    }
+    .back_button{
+        color: var(--text-color-light);
+    }
+    .source_link{
+        color: var(--text-color-light);
+    }
+    figure > img{
+        display: none;
+    }
+    figure > img.hidden{
+        display: block;
+    }
+    .step-content > .pattern-extra{
+        background-color: var(--bg-element-color-dark);
+    }
+    .step-content > .pattern-extra > p:last-child{
+        color: cyan;
+        background-color: var(--bg-element-accent-color-dark);
+    }
+    .square-sum-solution_notes > ul > li::marker{
+        color: cyan;
+    }
+    .note > a{
+        color: var(--text-color-light);
+    }
+    .viewer > .content > img{
+        background-color: var(--bg-color-dark);
+    }
+    .viewer-close_button{
+        color: var(--text-color-light);
+    }
+}
+
+/*
+*   Size Response
+*/
+@media only screen and (max-width: 700px){
+    .step-content > p{
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        padding: 1rem;
+    }
+    .step-content > .pattern-extra >p:last-child{
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 600px){
+    .step-content > .pattern-extra:nth-child(4) > p,
+    .step-content > .pattern-extra:nth-child(5) > p{
+        font-size: .8rem;
+    }
+}
+@media only screen and (max-width: 460px){
+    .step-content > .pattern-extra:nth-child(4) > p,
+    .step-content > .pattern-extra:nth-child(5) > p{
+        font-size: .7rem;
+    }
+}
+@media only screen and (max-width: 400px){
+    .step-content > .pattern-extra:nth-child(2) > p,
+    .step-content > .pattern-extra:nth-child(3) > p{
+        font-size: .9rem;
+    }
+    .step-content > .pattern-extra:nth-child(4) > p,
+    .step-content > .pattern-extra:nth-child(5) > p{
+        font-size: .6rem;
+    }
+}
+@media only screen and (max-width: 320px){
+    .step-content > .pattern-extra:nth-child(1) > p{
+        font-size: .9rem;
+    }
+    .step-content > .pattern-extra:nth-child(2) > p{
+        font-size: .8rem;
+    }
+    .step-content > .pattern-extra:nth-child(4) > p,
+    .step-content > .pattern-extra:nth-child(5) > p{
+        font-size: .45rem;
+    }
+}
+
+@keyframes ViewerOverlayFadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
